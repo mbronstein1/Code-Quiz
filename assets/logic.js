@@ -2,6 +2,7 @@
     //Create header with title and nav link for the scores.html page
     //Create opening page w/ div "data-state = visible" h2 and start button
     //Create 4 sections w/ div "class = questions" "data-state = hidden" "id=question 1, 2, 3, 4" and nested h2 (Question) and 4 radio inputs
+    //Create question/answer objects and add answers in array (loop through them and textContent each one in a radio element or li element)
 //Design layout w/ CSS
 //When start button is pressed, hide opening page, make question 1 visible, and start the timer from 90 seconds using setInterval()
 //Answering the question
