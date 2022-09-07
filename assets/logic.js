@@ -189,12 +189,13 @@ startBtn.addEventListener("click", function() {
 finalScoreDisplay.addEventListener("submit", function(){
 var initials = initialsInput.value;
     if (initials !== "") {
-        var userScore = JSON.parse(localStorage.getItem("score")) || [];
+        var userScore = JSON.parse(localStorage.getItem("scores")) || [];
         var userInput = {
             score: correctAnswers,
             userInitials: initials,
         };
         userScore.push(userInput);
-        localStorage.setItem("score", JSON.stringify(userScore));
+        localStorage.setItem("scores", JSON.stringify(userScore));
+        initialsInput = "";
     }
 });

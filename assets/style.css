@@ -1,3 +1,4 @@
+/* For index.html */
 #header {
     display: flex;
     justify-content: space-between;
@@ -42,4 +43,25 @@
 button {
     cursor: pointer;
     padding: 0 10px;
+}
+
+/* For scores.html */
+#container > h2 {
+    text-decoration: underline;
+    font-size: 30px;
+}
+
+#scorebox {
+    display: flex;
+    justify-content: center;
+    margin: 40px;
+}
+
+#initials-box, #scores-box {
+    padding: 15px;
+    border: 1px solid black;
+}
+
+#initials-header, #score-header {
+    text-decoration: underline;
 }
