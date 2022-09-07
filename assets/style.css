@@ -86,3 +86,15 @@ a button {
     background-color: green;
     cursor: pointer;
 }
+
+@media screen and (max-width: 650px) {
+    #header {
+        padding: 30px 20px;
+    }
+    #container {
+        width: 90%;
+    }
+    navbar * {
+        margin: 5px;
+    }
+}
