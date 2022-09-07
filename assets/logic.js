@@ -49,12 +49,12 @@ function displayQ1() {
     h1.textContent = questions[0].topic;
     question1.appendChild(h1);
     question1.appendChild(div);
-    h1.setAttribute("style", "margin-bottom: 40px;")
+    h1.setAttribute("style", "margin-bottom: 40px; color: green")
     for (var i = 0; i < questions[0].choices.length; i++) {
         var button = document.createElement("button");
         button.textContent = questions[0].choices[i];
         div.appendChild(button);
-        button.setAttribute("style", "display: block; margin: 20px auto;");
+        button.setAttribute("class", "quiz-buttons");
         button.addEventListener("click", function(e) {
             if (e.target.textContent === questions[0].answer) {
                 outcomeMsg.textContent = "Correct";
@@ -78,12 +78,12 @@ function displayQ2() {
     h1.textContent = questions[1].topic;
     question2.appendChild(h1);
     question2.appendChild(div);
-    h1.setAttribute("style", "margin-bottom: 40px;")
+    h1.setAttribute("style", "margin-bottom: 40px; color: green")
     for (var i = 0; i < questions[1].choices.length; i++) {
         var button = document.createElement("button");
         button.textContent = questions[1].choices[i];
         div.appendChild(button);
-        button.setAttribute("style", "display: block; margin: 20px auto;");
+        button.setAttribute("class", "quiz-buttons");
         button.addEventListener("click", function(e) {
             if (e.target.textContent === questions[1].answer) {
                 outcomeMsg.textContent = "Correct";
@@ -107,12 +107,12 @@ function displayQ3() {
     h1.textContent = questions[2].topic;
     question3.appendChild(h1);
     question3.appendChild(div);
-    h1.setAttribute("style", "margin-bottom: 40px;")
+    h1.setAttribute("style", "margin-bottom: 40px; color: green")
     for (var i = 0; i < questions[2].choices.length; i++) {
         var button = document.createElement("button");
         button.textContent = questions[2].choices[i];
         div.appendChild(button);
-        button.setAttribute("style", "display: block; margin: 20px auto;");
+        button.setAttribute("class", "quiz-buttons");
         button.addEventListener("click", function(e) {
             if (e.target.textContent === questions[2].answer) {
                 outcomeMsg.textContent = "Correct";
@@ -136,12 +136,12 @@ function displayQ4() {
     h1.textContent = questions[3].topic;
     question4.appendChild(h1);
     question4.appendChild(div);
-    h1.setAttribute("style", "margin-bottom: 40px;")
+    h1.setAttribute("style", "margin-bottom: 40px; color: green")
     for (var i = 0; i < questions[3].choices.length; i++) {
         var button = document.createElement("button");
         button.textContent = questions[3].choices[i];
         div.appendChild(button);
-        button.setAttribute("style", "display: block; margin: 20px auto;");
+        button.setAttribute("class", "quiz-buttons");
         button.addEventListener("click", function(e) {
             if (e.target.textContent === questions[3].answer) {
                 outcomeMsg.textContent = "Correct";
@@ -169,17 +169,24 @@ function displayMsg() {
 
 
 startBtn.addEventListener("click", function() {
-    secondsLeft = 90;
+    secondsLeft = 60;
     displayTimer.textContent = `You have ${secondsLeft} seconds left!`
     var timer = setInterval(function() {
         secondsLeft--;
         displayTimer.textContent = `You have ${secondsLeft} seconds left!`
-        if (secondsLeft === 0) {
+        if (secondsLeft <= 0) {
             clearInterval(timer);
+            displayTimer.textContent = " ";
+            question1.style.display = "none";
+            question2.style.display = "none";
+            question3.style.display = "none";
+            question4.style.display = "none";
+            finalScoreDisplay.style.display = "block";
+            displayMsg()
         }
         if (finalScoreDisplay.style.display === "block") {
             clearInterval(timer);
-            displayTimer.textContent = " "
+            displayTimer.textContent = " ";
         }
     }, 1000);
     openingPage.style.display = "none";

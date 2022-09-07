@@ -13,6 +13,8 @@ function renderScores() {
         var p2 = document.createElement("p");
         p1.textContent = highScores[i].userInitials;
         p2.textContent = highScores[i].score;
+        p1.style.color = "green";
+        p2.style.color = "green";
         initials.appendChild(p1);
         scores.appendChild(p2);
     }
