@@ -19,21 +19,24 @@
     <main id="container">
         <div id="opening-page">
             <h2>Test your knowledge with this timed coding quiz</h2>
-            <p>You think you know how to code? Take this timed quiz and prove yourself against other competitors. Can you hold the highscore? <em>We shall see!</em></p>
+            <p>You think you know how to code? Take this timed quiz and prove yourself against other competitors. Can you hold the highscore? We shall see! <em>BUT BE WARNED!</em> You will lose time for every <strong>WRONG</strong> selection so answer carefully.</p>
             <button id="start-btn">Start</button>
         </div>
         <div id="q1" class="questions">
         </div>
-        <p class="answer-outcome"></p>
         <div id="q2" class="questions">
-            <p class="answer-outcome"></p>
         </div>
         <div id="q3" class="questions">
-            <p class="answer-outcome"></p>
         </div>
         <div id="q4" class="questions">
-            <p class="answer-outcome"></p>
         </div>
+        <p id="answer-outcome"></p>
+        <form id="final-score-display" action="scores.html">
+            <h1 id="display-msg"></h1>
+            <p id="final-score"></p>
+            <input type="text" id="initials-input">
+            <button type="submit" form="final-score-display" value="Submit">Submit</button>
+        </form>
     </main>
 
     <script src="./assets/questions.js"></script>

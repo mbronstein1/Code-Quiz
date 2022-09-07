@@ -5,13 +5,18 @@ var questions = [
         answer: "Hypertext Markup Language"
     },
     {
-        topic: "",
-        choices: [],
-        answer: "",
+        topic: "What is the best tool to use to test/debug your code?",
+        choices: ["console.log", "window.test", "location.debug", "test.code"],
+        answer: "console.log",
     },
     {
-        topic: "",
-        choices: [],
-        answer: "",
+        topic: "Which element do you use to connect an external style sheet to an HTML file?",
+        choices: ["<script>", "<link>", "<body>", "<connect>"],
+        answer: "<link>",
+    },
+    {
+        topic: "What is the best way to access each item in an array?",
+        choices: ["Why loop", "Fruit loop", "For loop", "Who loop"],
+        answer: "For loop",
     }
 ];

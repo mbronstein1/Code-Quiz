@@ -32,22 +32,16 @@ var question1 = document.getElementById("q1");
 var question2 = document.getElementById("q2");
 var question3 = document.getElementById("q3");
 var question4 = document.getElementById("q4");
-var outcomeMsg = document.querySelectorAll(".answer-outcome");
+var outcomeMsg = document.getElementById("answer-outcome");
+var finalScoreDisplay = document.getElementById("final-score-display");
+var congratsMsg = document.getElementById("display-msg");
+var initialsInput = document.getElementById("initials-input")
 var correctAnswers = 0;
 var secondsLeft = 90;
-
-startBtn.addEventListener("click", function() {
-    displayTimer.textContent = `You have ${secondsLeft} seconds left!`
-    var timer = setInterval(function() {
-        secondsLeft--;
-        displayTimer.textContent = `You have ${secondsLeft} seconds left!`
-        if (secondsLeft === 0) {
-            clearInterval(timer);
-        }
-    }, 1000);
-    openingPage.style.display = "none";
-    displayQ1();
-})
+question2.style.display = "none";
+question3.style.display = "none";
+question4.style.display = "none";
+finalScoreDisplay.style.display = "none";
 
 function displayQ1() {
     var h1 = document.createElement("h1");
@@ -63,15 +57,144 @@ function displayQ1() {
         button.setAttribute("style", "display: block; margin: 20px auto;");
         button.addEventListener("click", function(e) {
             if (e.target.textContent === questions[0].answer) {
-                outcomeMsg[0].textContent = "Correct";
-                outcomeMsg[0].setAttribute("style", "color: green");
+                outcomeMsg.textContent = "Correct";
+                outcomeMsg.setAttribute("style", "color: green; font-size: 20px; font-weight: 700;");
                 correctAnswers++;
             } else {
-                outcomeMsg[0].textContent = "Incorrect";
-                outcomeMsg[0].setAttribute("style", "color: red");
+                outcomeMsg.textContent = "Incorrect";
+                outcomeMsg.setAttribute("style", "color: red; font-size: 20px; font-weight: 700;");
                 secondsLeft = secondsLeft - 30;
             }
-            question1.setAttribute("style", "display: none;")
+            question1.style.display = "none";
+            question2.style.display = "block";
+            displayQ2();
+        }) 
+    }
+};
+
+function displayQ2() {
+    var h1 = document.createElement("h1");
+    var div = document.createElement("div");
+    h1.textContent = questions[1].topic;
+    question2.appendChild(h1);
+    question2.appendChild(div);
+    h1.setAttribute("style", "margin-bottom: 40px;")
+    for (var i = 0; i < questions[1].choices.length; i++) {
+        var button = document.createElement("button");
+        button.textContent = questions[1].choices[i];
+        div.appendChild(button);
+        button.setAttribute("style", "display: block; margin: 20px auto;");
+        button.addEventListener("click", function(e) {
+            if (e.target.textContent === questions[1].answer) {
+                outcomeMsg.textContent = "Correct";
+                outcomeMsg.setAttribute("style", "color: green; font-size: 20px; font-weight: 700;");
+                correctAnswers++;
+            } else {
+                outcomeMsg.textContent = "Incorrect";
+                outcomeMsg.setAttribute("style", "color: red; font-size: 20px; font-weight: 700;");
+                secondsLeft = secondsLeft - 30;
+            }
+            question2.style.display = "none";
+            question3.style.display = "block";
+            displayQ3();
         })
     }
-}
+};
+
+function displayQ3() {
+    var h1 = document.createElement("h1");
+    var div = document.createElement("div");
+    h1.textContent = questions[2].topic;
+    question3.appendChild(h1);
+    question3.appendChild(div);
+    h1.setAttribute("style", "margin-bottom: 40px;")
+    for (var i = 0; i < questions[2].choices.length; i++) {
+        var button = document.createElement("button");
+        button.textContent = questions[2].choices[i];
+        div.appendChild(button);
+        button.setAttribute("style", "display: block; margin: 20px auto;");
+        button.addEventListener("click", function(e) {
+            if (e.target.textContent === questions[2].answer) {
+                outcomeMsg.textContent = "Correct";
+                outcomeMsg.setAttribute("style", "color: green; font-size: 20px; font-weight: 700;");
+                correctAnswers++;
+            } else {
+                outcomeMsg.textContent = "Incorrect";
+                outcomeMsg.setAttribute("style", "color: red; font-size: 20px; font-weight: 700;");
+                secondsLeft = secondsLeft - 30;
+            }
+            question3.style.display = "none";
+            question4.style.display = "block";
+            displayQ4();
+        })
+    }
+};
+
+function displayQ4() {
+    var h1 = document.createElement("h1");
+    var div = document.createElement("div");
+    h1.textContent = questions[3].topic;
+    question4.appendChild(h1);
+    question4.appendChild(div);
+    h1.setAttribute("style", "margin-bottom: 40px;")
+    for (var i = 0; i < questions[3].choices.length; i++) {
+        var button = document.createElement("button");
+        button.textContent = questions[3].choices[i];
+        div.appendChild(button);
+        button.setAttribute("style", "display: block; margin: 20px auto;");
+        button.addEventListener("click", function(e) {
+            if (e.target.textContent === questions[3].answer) {
+                outcomeMsg.textContent = "Correct";
+                outcomeMsg.setAttribute("style", "color: green; font-size: 20px; font-weight: 700;");
+                correctAnswers++;
+            } else {
+                outcomeMsg.textContent = "Incorrect";
+                outcomeMsg.setAttribute("style", "color: red; font-size: 20px; font-weight: 700;");
+                secondsLeft = secondsLeft - 30;
+            }
+            question4.style.display = "none";
+            finalScoreDisplay.style.display = "block";
+            displayMsg();
+        })
+    }
+};
+
+function displayMsg() {
+    congratsMsg.textContent = `Congratulations! You got ${correctAnswers} correct.`
+    var p = document.createElement("p");
+    p.setAttribute("style", "font-size: 16px; font-weight: 400;")
+    p.textContent = `Input your initials below to be added to the scoreboard!`;
+    congratsMsg.appendChild(p);    
+};
+
+
+startBtn.addEventListener("click", function() {
+    secondsLeft = 90;
+    displayTimer.textContent = `You have ${secondsLeft} seconds left!`
+    var timer = setInterval(function() {
+        secondsLeft--;
+        displayTimer.textContent = `You have ${secondsLeft} seconds left!`
+        if (secondsLeft === 0) {
+            clearInterval(timer);
+        }
+        if (finalScoreDisplay.style.display === "block") {
+            clearInterval(timer);
+            displayTimer.textContent = " "
+        }
+    }, 1000);
+    openingPage.style.display = "none";
+    displayQ1();
+});
+
+finalScoreDisplay.addEventListener("submit", function(){
+var initials = initialsInput.value;
+    if (initials !== "") {
+        var userScore = JSON.parse(localStorage.getItem("score")) || [];
+        var userInput = {
+            score: correctAnswers,
+            userInitials: initials,
+        };
+        userScore.push(userInput);
+        localStorage.setItem("score", JSON.stringify(userScore));
+    }
+});

@@ -35,6 +35,10 @@
     display: block;
 }
 
+#opening-page p {
+    line-height: 1.5;
+}
+
 button {
     cursor: pointer;
     padding: 0 10px;
