@@ -1,7 +1,7 @@
 //Create html structure of page
     //Create header with title and nav link for the scores.html page
     //Create opening page w/ div "data-state = visible" h2 and start button
-    //Create 4 sections w/ div "class = questions" "data-state = hidden" "id=question 1, 2, 3, 4" and nested h2 (Question) and 4 radio inputs
+    //Create 4 sections w/ div "class = questions" "id=question 1, 2, 3, 4" and nested h2 (Question)
     //Create question/answer objects and add answers in array (loop through them and textContent each one in a radio element or li element)
 //Design layout w/ CSS
 //When start button is pressed, hide opening page, make question 1 visible, and start the timer from 90 seconds using setInterval()
@@ -23,3 +23,55 @@
     //getList() from local storage and place under ul in li elements
         //Both the initial and corresponding score
     //Sort array in order of highest number
+
+var displayTimer = document.getElementById("timer");
+var container = document.getElementById("container");
+var openingPage = document.getElementById("opening-page");
+var startBtn = document.getElementById("start-btn");
+var question1 = document.getElementById("q1");
+var question2 = document.getElementById("q2");
+var question3 = document.getElementById("q3");
+var question4 = document.getElementById("q4");
+var outcomeMsg = document.querySelectorAll(".answer-outcome");
+var correctAnswers = 0;
+var secondsLeft = 90;
+
+startBtn.addEventListener("click", function() {
+    displayTimer.textContent = `You have ${secondsLeft} seconds left!`
+    var timer = setInterval(function() {
+        secondsLeft--;
+        displayTimer.textContent = `You have ${secondsLeft} seconds left!`
+        if (secondsLeft === 0) {
+            clearInterval(timer);
+        }
+    }, 1000);
+    openingPage.style.display = "none";
+    displayQ1();
+})
+
+function displayQ1() {
+    var h1 = document.createElement("h1");
+    var div = document.createElement("div");
+    h1.textContent = questions[0].topic;
+    question1.appendChild(h1);
+    question1.appendChild(div);
+    h1.setAttribute("style", "margin-bottom: 40px;")
+    for (var i = 0; i < questions[0].choices.length; i++) {
+        var button = document.createElement("button");
+        button.textContent = questions[0].choices[i];
+        div.appendChild(button);
+        button.setAttribute("style", "display: block; margin: 20px auto;");
+        button.addEventListener("click", function(e) {
+            if (e.target.textContent === questions[0].answer) {
+                outcomeMsg[0].textContent = "Correct";
+                outcomeMsg[0].setAttribute("style", "color: green");
+                correctAnswers++;
+            } else {
+                outcomeMsg[0].textContent = "Incorrect";
+                outcomeMsg[0].setAttribute("style", "color: red");
+                secondsLeft = secondsLeft - 30;
+            }
+            question1.setAttribute("style", "display: none;")
+        })
+    }
+}

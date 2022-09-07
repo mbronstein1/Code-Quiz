@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Quiz</title>
+    <link rel="stylesheet" href="./assets/reset.css">
+    <link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+    <header id="header">
+        <h1>Code Quiz</h1>
+        <div id = "navbar">
+            <div id="timer"></div>
+            <a href="./scores.html">View Highscores</a>
+        </div>
+    </header>
+    <main id="container">
+        <div id="opening-page">
+            <h2>Test your knowledge with this timed coding quiz</h2>
+            <p>You think you know how to code? Take this timed quiz and prove yourself against other competitors. Can you hold the highscore? <em>We shall see!</em></p>
+            <button id="start-btn">Start</button>
+        </div>
+        <div id="q1" class="questions">
+        </div>
+        <p class="answer-outcome"></p>
+        <div id="q2" class="questions">
+            <p class="answer-outcome"></p>
+        </div>
+        <div id="q3" class="questions">
+            <p class="answer-outcome"></p>
+        </div>
+        <div id="q4" class="questions">
+            <p class="answer-outcome"></p>
+        </div>
+    </main>
+
+    <script src="./assets/questions.js"></script>
+    <script src="./assets/logic.js"></script>
+</body>
+</html>

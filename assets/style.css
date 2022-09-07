@@ -1,0 +1,41 @@
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: green;
+    border-bottom: 10px solid lightgreen;
+    padding: 30px 40px;
+    color: yellow;
+}
+
+#navbar {
+    display: flex;
+}
+
+#navbar * {
+    margin: 0 10px;
+}
+
+#header a {
+    text-decoration: none;
+    color: yellow;
+}
+
+#container {
+    text-align: center;
+    margin: 100px auto;
+    width: 50%;
+}
+
+#container h2, #container p {
+    margin: 20px;
+}
+
+#opening-page {
+    display: block;
+}
+
+button {
+    cursor: pointer;
+    padding: 0 10px;
+}
