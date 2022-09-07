@@ -5,7 +5,7 @@ var questions = [
         answer: "Hypertext Markup Language"
     },
     {
-        topic: "What is the best tool to use to test/debug your code?",
+        topic: "What is the best tool to test/debug your code?",
         choices: ["console.log", "window.test", "location.debug", "test.code"],
         answer: "console.log",
     },
