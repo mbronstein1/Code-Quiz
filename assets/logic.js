@@ -1,29 +1,29 @@
-//Create html structure of page
-    //Create header with title and nav link for the scores.html page
-    //Create opening page w/ div "data-state = visible" h2 and start button
-    //Create 4 sections w/ div "class = questions" "id=question 1, 2, 3, 4" and nested h2 (Question)
-    //Create question/answer objects and add answers in array (loop through them and textContent each one in a radio element or li element)
-//Design layout w/ CSS
-//When start button is pressed, hide opening page, make question 1 visible, and start the timer from 90 seconds using setInterval()
-//Answering the question
-    //When correct answer is selected, display a green message (maybe <p> tag) saying "Correct!"
-        //Increment correct answer variable
-    //When incorrect answer is selected, display a red message saying "Sorry, that is incorrect."
-        //When incorrect answer is selected, decrement time by 30 seconds
-    //After 1 second of selecting answer, hide question 1 page and make visible question 2 page
-    //Continue same method as above until question 4 is answered
-//After question 4 has been answered, display page with # of correct answers w/ a continue button
-//After continue button is selected, go to page where user can add initials
-    //Store initials and score in local storage
-    //Maybe store in an array so multiple scores can be stored
-//After initials are inputted and stored, go back to opening page
-//Create High scores page in html
-    //Create header w/ nav link to index.html page to return to quiz
-    //Create an unorganized list w/ "id = high-scores"
-    //getList() from local storage and place under ul in li elements
-        //Both the initial and corresponding score
-    //Sort array in order of highest number
+//(DONE) Create html structure of page
+    //(DONE) Create header with title and nav link for the scores.html page
+    //(DONE) Create opening page w/ div "data-state = visible" h2 and start button
+    //(DONE) Create 4 sections w/ div "class = questions" "id=question 1, 2, 3, 4" and nested h2 (Question)
+    //(DONE) Create question/answer objects and add answers in array (loop through them and textContent each one in a radio element or li element)
+//(DONE) Design layout w/ CSS
+//(DONE) When start button is pressed, hide opening page, make question 1 visible, and start the timer from 60 seconds using setInterval()
+//(DONE) Answering the question
+    //W(DONE) hen correct answer is selected, display a green message (maybe <p> tag) saying "Correct!"
+        //(DONE) Increment correct answer variable
+    //(DONE) When incorrect answer is selected, display a red message saying "Incorrect."
+        //(DONE) When incorrect answer is selected, decrement time by 30 seconds
+    //(DONE) After selecting answer, hide question 1 page and make visible question 2 page
+    //(DONE) Continue same method as above until question 4 is answered
+//(DONE) After question 4 has been answered, display page with # of correct answers w/ an input for initials
+    //(DONE) Store initials and score in local storage
+        //(DONE) Store in an array so multiple scores can be stored
+//(DONE) After initials are inputted and stored, go to high scores page
+//(DONE) Create High scores page in html
+    //(DONE) Create header similar to index.html page with home page button to return to quiz
+    //(DONE) Dynamically create <p> elements with textContent that is the value of initials and score stored in local storage
+    //(DONE) getList() from local storage and place under heading elements in <p>
+        //(DONE) Both the initial and corresponding score
+    //Sort array in order of highest number (tried and couldn't figure it out)
 
+//Create variables
 var displayTimer = document.getElementById("timer");
 var container = document.getElementById("container");
 var openingPage = document.getElementById("opening-page");
@@ -37,37 +37,38 @@ var finalScoreDisplay = document.getElementById("final-score-display");
 var congratsMsg = document.getElementById("display-msg");
 var initialsInput = document.getElementById("initials-input")
 var correctAnswers = 0;
-var secondsLeft = 90;
+var secondsLeft = 60;
 question2.style.display = "none";
 question3.style.display = "none";
 question4.style.display = "none";
 finalScoreDisplay.style.display = "none";
 
+//function to display question1 - reaching questions array from questions.js
 function displayQ1() {
     var h1 = document.createElement("h1");
     var div = document.createElement("div");
     h1.textContent = questions[0].topic;
-    question1.appendChild(h1);
+    question1.appendChild(h1);//Creating and appending h1 "Topic/Question" to html
     question1.appendChild(div);
     h1.setAttribute("style", "margin-bottom: 40px; color: green")
-    for (var i = 0; i < questions[0].choices.length; i++) {
+    for (var i = 0; i < questions[0].choices.length; i++) {//Looping through the questions array
         var button = document.createElement("button");
         button.textContent = questions[0].choices[i];
-        div.appendChild(button);
+        div.appendChild(button);//Creating and appending a button for each question in the q1 object within the questions array
         button.setAttribute("class", "quiz-buttons");
         button.addEventListener("click", function(e) {
-            if (e.target.textContent === questions[0].answer) {
+            if (e.target.textContent === questions[0].answer) {//If textContent of targeted element equals the answer property within the object, then it is correct
                 outcomeMsg.textContent = "Correct";
                 outcomeMsg.setAttribute("style", "color: green; font-size: 20px; font-weight: 700;");
                 correctAnswers++;
-            } else {
+            } else { //Otherwise decrease time by 30 seconds
                 outcomeMsg.textContent = "Incorrect";
                 outcomeMsg.setAttribute("style", "color: red; font-size: 20px; font-weight: 700;");
                 secondsLeft = secondsLeft - 30;
             }
-            question1.style.display = "none";
-            question2.style.display = "block";
-            displayQ2();
+            question1.style.display = "none";//Hide current question
+            question2.style.display = "block";//Show next question
+            displayQ2();//Execute next question function and repeat
         }) 
     }
 };
@@ -153,13 +154,13 @@ function displayQ4() {
                 secondsLeft = secondsLeft - 30;
             }
             question4.style.display = "none";
-            finalScoreDisplay.style.display = "block";
+            finalScoreDisplay.style.display = "block";//Display finalScoreDisplay page
             displayMsg();
         })
     }
 };
 
-function displayMsg() {
+function displayMsg() {//Displays how many questions were answered correctly
     congratsMsg.textContent = `Congratulations! You got ${correctAnswers} correct.`
     var p = document.createElement("p");
     p.setAttribute("style", "font-size: 16px; font-weight: 400;")
@@ -168,13 +169,13 @@ function displayMsg() {
 };
 
 
-startBtn.addEventListener("click", function() {
+startBtn.addEventListener("click", function() {//Starts game by clicking button
     secondsLeft = 60;
-    displayTimer.textContent = `You have ${secondsLeft} seconds left!`
+    displayTimer.textContent = `You have ${secondsLeft} seconds left!`//Displays time left
     var timer = setInterval(function() {
-        secondsLeft--;
+        secondsLeft--;//decrements time
         displayTimer.textContent = `You have ${secondsLeft} seconds left!`
-        if (secondsLeft <= 0) {
+        if (secondsLeft <= 0) {//If timer is at or below zero, clear timer and all questions and go to last page
             clearInterval(timer);
             displayTimer.textContent = " ";
             question1.style.display = "none";
@@ -184,25 +185,25 @@ startBtn.addEventListener("click", function() {
             finalScoreDisplay.style.display = "block";
             displayMsg()
         }
-        if (finalScoreDisplay.style.display === "block") {
+        if (finalScoreDisplay.style.display === "block") {//If the final score page is displayed before the timer is over, clear interval and time display text
             clearInterval(timer);
             displayTimer.textContent = " ";
         }
     }, 1000);
-    openingPage.style.display = "none";
+    openingPage.style.display = "none";//hide opening page
     displayQ1();
 });
 
 finalScoreDisplay.addEventListener("submit", function(){
-var initials = initialsInput.value;
+var initials = initialsInput.value;//storing the input value in a variable
     if (initials !== "") {
-        var userScore = JSON.parse(localStorage.getItem("scores")) || [];
+        var userScore = JSON.parse(localStorage.getItem("scores")) || [];//Either get stored items from local storage and convert to object or if there are no items, store empty array
         var userInput = {
             score: correctAnswers,
             userInitials: initials,
         };
-        userScore.push(userInput);
-        localStorage.setItem("scores", JSON.stringify(userScore));
-        initialsInput = "";
+        userScore.push(userInput);//Push items we just got from local storage into array
+        localStorage.setItem("scores", JSON.stringify(userScore));//Return items to local storage in string-form
+        initialsInput = "";//Clear input of any strings
     }
 });
