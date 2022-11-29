@@ -6,7 +6,7 @@ This is the fourth challenge in the Northwestern Coding Bootcamp (Module 4). We,
 For the first time, we also created a relatively plain html file and dynamically created the text, buttons, etc on the page using javascript. This was, by far, the most challenging aspect of the project.
 
 ## Link to live page
-[Live Link](https://mbronstein1.github.io/Code-Quiz-Challenge-4/)
+[Live Link](https://mbronstein1.github.io/Code-Quiz/)
 
 ## Screenshot
 ![Webpage Screenshot](./assets/images/code-quiz-screenshot.jpg)
