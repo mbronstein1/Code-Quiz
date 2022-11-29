@@ -1,4 +1,4 @@
-# Music-Quiz-Challenge4
+# Coding-Quiz
 
 ## Description
 This is the fourth challenge in the Northwestern Coding Bootcamp (Module 4). We, the students, were to create a timed coding multiple-choice quiz with multiple questions, where correct answers were tracked and incorrect answers reduced the time faster. We were also required to store scores and user initials in our local storage so when we refresh the scores page or visit it on another day, the scores and initials still render.
